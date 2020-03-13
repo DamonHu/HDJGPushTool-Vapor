@@ -5,7 +5,7 @@
 //  Created by Damon on 2020/3/12.
 //
 
-class HDJGPushAudienceModel {
+public class HDJGPushAudienceModel {
     private(set) var tag: [String]?
     private(set) var tagAnd: [String]?
     private(set) var tagNot: [String]?

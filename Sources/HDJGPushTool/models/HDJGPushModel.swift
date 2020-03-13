@@ -8,14 +8,14 @@
 import Foundation
 
 //推送的平台
-enum HDJGPushPlatform {
+public enum HDJGPushPlatform {
     case all
     case ios
     case android
     case winphone
 }
 
-class HDJGPushModel {
+public class HDJGPushModel {
     var platform: HDJGPushPlatform = .all //推送的平台
     var audience: HDJGPushAudienceModel?  //推送的目标，如果为NULL则推送全部，全部每天通知10次
     var alertTitle = ""     //推送的标题

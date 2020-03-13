@@ -8,7 +8,7 @@
 import Vapor
 import Crypto
 
-class HDJGPushTool {
+public class HDJGPushTool {
     private var appKey = ""
     private var appSecrect = ""
     
