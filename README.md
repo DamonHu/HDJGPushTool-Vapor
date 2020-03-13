@@ -1,4 +1,8 @@
+![](./cocoapodTool.png)
+
 # HDJGPushTool
+
+`JiGuang Push` is an independent third-party cloud push platform in China, which can quickly integrate the message push function of Android and iOS platforms. There may not be many users in other countries. If you need English instructions, you can submit an issue.
 
 `vapor`是一个`swift`语言开发的服务器框架，该项目是在`vapor`框架下集成使用极光推送的库。
 
