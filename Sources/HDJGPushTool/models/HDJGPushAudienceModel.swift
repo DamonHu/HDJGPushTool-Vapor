@@ -12,18 +12,18 @@ public class HDJGPushAudienceModel {
     private(set) var alias: [String]?
     private(set)  var registrationId: [String]?
     
-    init(tag: [String]?, tagAnd: [String]?, tagNot: [String]?) {
+    public init(tag: [String]?, tagAnd: [String]?, tagNot: [String]?) {
         self.tag = tag
         self.tagAnd = tagAnd
         self.tagNot = tagNot
     }
     
     //一台设备只能绑定一个alias，不推荐使用
-    init(alias: [String]) {
+    public init(alias: [String]) {
         self.alias = alias
     }
     
-    init(registrationId: [String]) {
+    public init(registrationId: [String]) {
         self.registrationId = registrationId
     }
 }

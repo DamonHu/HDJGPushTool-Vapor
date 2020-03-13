@@ -12,13 +12,13 @@ public class HDJGPushTool {
     private var appKey = ""
     private var appSecrect = ""
     
-    required init(appKey: String, appSecrect: String) {
+    public required init(appKey: String, appSecrect: String) {
         self.appKey = appKey
         self.appSecrect = appSecrect
     }
     //推送通知
     @discardableResult
-    func pushNotification(_ req: Request, pushModel: HDJGPushModel) throws -> Future<HTTPResponse> {
+    public func pushNotification(_ req: Request, pushModel: HDJGPushModel) throws -> Future<HTTPResponse> {
         let maskSecret = "\(self.appKey):\(self.appSecrect)"
         let base64Data = maskSecret.data(using: String.Encoding.utf8)
         let base64String: String = base64Data?.base64EncodedString() ?? ""

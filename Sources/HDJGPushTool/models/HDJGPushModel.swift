@@ -23,7 +23,7 @@ public class HDJGPushModel {
     var apnsProduction = false //是否推送正式环境
     
     
-    init(alertTitle: String, alertContent: String) {
+    public init(alertTitle: String, alertContent: String) {
         self.alertTitle = alertTitle
         self.alertContent = alertContent
     }
@@ -71,7 +71,6 @@ public class HDJGPushModel {
         //附加参数
         jsonObject["options"] = ["apns_production": self.apnsProduction]
         let requestData: Data = try JSONSerialization.data(withJSONObject: jsonObject, options: JSONSerialization.WritingOptions.prettyPrinted)
-        print(jsonObject)
         return requestData
     }
 }
