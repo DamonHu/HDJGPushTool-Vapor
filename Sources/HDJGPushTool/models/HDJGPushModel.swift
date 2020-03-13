@@ -16,11 +16,11 @@ public enum HDJGPushPlatform {
 }
 
 public class HDJGPushModel {
-    var platform: HDJGPushPlatform = .all //推送的平台
-    var audience: HDJGPushAudienceModel?  //推送的目标，如果为NULL则推送全部，全部每天通知10次
-    var alertTitle = ""     //推送的标题
-    var alertContent = ""   //推送的内容
-    var apnsProduction = false //是否推送正式环境
+    public var platform: HDJGPushPlatform = .all //推送的平台
+    public var audience: HDJGPushAudienceModel?  //推送的目标，如果为NULL则推送全部，全部每天通知10次
+    public var apnsProduction = false //是否推送正式环境
+    private var alertTitle = ""     //推送的标题
+    private var alertContent = ""   //推送的内容
     
     
     public init(alertTitle: String, alertContent: String) {
