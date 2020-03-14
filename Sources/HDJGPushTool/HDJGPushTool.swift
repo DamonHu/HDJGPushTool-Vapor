@@ -26,6 +26,7 @@ public class HDJGPushTool {
         let client = try req.make(Client.self)
         let request = Request(http: HTTPRequest(method: HTTPMethod.POST, url: URL(string: "https://api.jpush.cn/v3/push")!, headers: HTTPHeaders([("Authorization" , "Basic " + base64String)]), body: try pushModel.getRequestJsonData()), using: req)
         return client.send(request).map { (response) -> HTTPResponse in
+            print(response)
             return response.http
         }
     }
