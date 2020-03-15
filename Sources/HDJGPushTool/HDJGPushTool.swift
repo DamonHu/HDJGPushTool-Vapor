@@ -5,7 +5,7 @@
 //  Created by Damon on 2020/2/27.
 //
 
-import Core
+import Vapor
 import Crypto
 
 public class HDJGPushTool {
