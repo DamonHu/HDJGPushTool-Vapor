@@ -1,6 +1,6 @@
 ![](./cocoapodTool.png)
 
-# HDJGPushTool
+# VAPOR - HDJGPushTool
 
 `JiGuang Push` is an independent third-party cloud push platform in China, which can quickly integrate the message push function of Android and iOS platforms. There may not be many users in other countries. If you need English instructions, you can submit an issue.
 
@@ -12,12 +12,13 @@
 
 可以采用SPM方式添加，也可以采用源文件方式添加
 
-### 1.1、SPM方式集成
+
+### vapor 3.0版本集成SPM方式集成
 
 在`Vapor`项目的`Package`文件中，在`dependencies`添加依赖
 
 ```
-.package(url: "https://github.com/DamonHu/vapor-HDJGPushTool.git", from: "1.1.8"),
+.package(url: "https://github.com/DamonHu/HDJGPushTool.git", from: "1.0.0"),
 ```
 
 在`targets`中添加
@@ -25,7 +26,24 @@
 ```
 .target(name: "App", dependencies: ["Vapor", "HDJGPushTool"]),
 ```
-### 1.2、源文件方式添加
+
+### vapor 4.0版本集成SPM方式集成
+
+在`Vapor`项目的`Package`文件中，在`dependencies`添加依赖
+
+```
+.package(url: "https://github.com/DamonHu/HDJGPushTool.git", from: "4.0.0"),
+```
+
+在`targets`中添加
+
+```
+.target(name: "App", dependencies: [
+            .product(name: "HDJGPushTool", package: "HDJGPushTool"),
+        ]),
+```
+
+#### 1.2、源文件方式添加
 
 将本git仓库里面的`Sources`目录下的`HDJGPushTool`整个文件夹拖入添加到工程即可
 
