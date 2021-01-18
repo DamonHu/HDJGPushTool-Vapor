@@ -24,7 +24,7 @@ let package = Package(
             .product(name: "Vapor", package: "vapor")
         ]),
         .testTarget(name: "HDJGPushToolTests", dependencies: [
-            .target(name: "App")
+            .product(name: "Vapor", package: "vapor")
         ]),
     ]
 )
