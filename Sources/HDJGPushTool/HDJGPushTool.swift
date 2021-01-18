@@ -18,7 +18,7 @@ public class HDJGPushTool {
     }
     //推送通知
     @discardableResult
-    public func pushNotification(_ req: Request, pushModel: HDJGPushModel) throws -> Future<HTTPResponse> {
+    public func pushNotification(_ req: Request, pushModel: HDJGPushModel) throws -> EventLoopFuture<HTTPResponse> {
         let maskSecret = "\(self.appKey):\(self.appSecrect)"
         let base64Data = maskSecret.data(using: String.Encoding.utf8)
         let base64String: String = base64Data?.base64EncodedString() ?? ""
