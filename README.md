@@ -18,7 +18,7 @@
 在`Vapor`项目的`Package`文件中，在`dependencies`添加依赖
 
 ```
-.package(url: "https://github.com/DamonHu/HDJGPushTool.git", from: "1.0.0"),
+.package(url: "https://github.com/DamonHu/HDJGPushTool-Vapor.git", from: "1.0.0"),
 ```
 
 在`targets`中添加
@@ -32,14 +32,14 @@
 在`Vapor`项目的`Package`文件中，在`dependencies`添加依赖
 
 ```
-.package(url: "https://github.com/DamonHu/HDJGPushTool.git", from: "4.0.0"),
+.package(url: "https://github.com/DamonHu/HDJGPushTool-Vapor.git", from: "4.0.0"),
 ```
 
 在`targets`中添加
 
 ```
 .target(name: "App", dependencies: [
-            .product(name: "HDJGPushTool", package: "HDJGPushTool"),
+            .product(name: "HDJGPushTool", package: "HDJGPushTool-Vapor"),
         ]),
 ```
 
