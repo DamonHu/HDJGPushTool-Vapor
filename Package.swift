@@ -25,9 +25,6 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(name: "HDJGPushTool", dependencies: [
             .product(name: "Vapor", package: "vapor") 
-        ]),
-        .testTarget(name: "HDJGPushToolTests", dependencies: [
-            .product(name: "Vapor", package: "vapor")
-        ]),
+        ])
     ]
 )
