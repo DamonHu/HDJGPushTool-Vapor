@@ -33,4 +33,19 @@ public class HDJGPushTool {
             return json
         }
     }
+
+    //检测id是否正常
+    @discardableResult
+    public func checkDevice(_ req: Request, registrationID: String) throws -> EventLoopFuture<[String: Any]> {
+        let maskSecret = "\(self.appKey):\(self.appSecrect)"
+        let base64Data = maskSecret.data(using: String.Encoding.utf8)
+        let base64String: String = base64Data?.base64EncodedString() ?? ""
+
+        return req.client.get("https://api.jpush.cn/v3/devices/\(registrationID)", headers: HTTPHeaders([("Authorization" , "Basic " + base64String)])).map { (response) -> ([String: Any]) in
+            guard var body = response.body else { return [:] }
+            let bodyData = body.readData(length: body.readableBytes) ?? Data()
+            let json = (try? JSONSerialization.jsonObject(with: bodyData)) as? [String: Any] ?? [:]
+            return json
+        }
+    }
 }
