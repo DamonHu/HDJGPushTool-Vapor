@@ -17,7 +17,7 @@ public class HDJGPushTool {
     }
     //推送通知
     @discardableResult
-    public func pushNotification(_ req: Request, pushModel: HDJGPushModel) throws -> EventLoopFuture<HTTPResponseStatus> {
+    public func pushNotification(_ req: Request, pushModel: HDJGPushModel) throws -> EventLoopFuture<[String: Any]> {
         let maskSecret = "\(self.appKey):\(self.appSecrect)"
         let base64Data = maskSecret.data(using: String.Encoding.utf8)
         let base64String: String = base64Data?.base64EncodedString() ?? ""
@@ -26,8 +26,10 @@ public class HDJGPushTool {
             if let jsonData =  try? pushModel.getRequestJsonData() {
                 try req.content.encode(String.init(data: jsonData, encoding: .utf8) ?? "")
             }
-        }.map { (res) -> (HTTPResponseStatus) in
-            return .ok
+        }.map { (response) -> ([String: Any]) in
+            let bodyData = response.body?.readData(length: response.body?.readableBytes ?? 0) ?? Data()
+            let json = try JSONSerialization.jsonObject(with: bodyData) as? [String: Any] ?? [:]
+            return json
         }
     }
 }
