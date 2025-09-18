@@ -27,8 +27,9 @@ public class HDJGPushTool {
                 try req.content.encode(String.init(data: jsonData, encoding: .utf8) ?? "")
             }
         }.map { (response) -> ([String: Any]) in
-            let bodyData = response.body?.readData(length: response.body?.readableBytes ?? 0) ?? Data()
-            let json = try JSONSerialization.jsonObject(with: bodyData) as? [String: Any] ?? [:]
+            guard var body = response.body else { return [:] }
+            let bodyData = body.readData(length: body.readableBytes) ?? Data()
+            let json = (try? JSONSerialization.jsonObject(with: bodyData)) as? [String: Any] ?? [:]
             return json
         }
     }
