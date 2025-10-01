@@ -24,9 +24,8 @@ public class HDJGPushTool {
         let base64String: String = base64Data?.base64EncodedString() ?? ""
 
         return req.client.post("https://api.jpush.cn/v3/push", headers: HTTPHeaders([("Authorization" , "Basic " + base64String)])) { (req) in
-            if let jsonData = pushModel.getRequestJsonData() {
-                req.content.encode(String.init(data: jsonData, encoding: .utf8) ?? "")
-            }
+            let jsonData = pushModel.getRequestJsonData()
+            try? req.content.encode(String.init(data: jsonData, encoding: .utf8) ?? "")
         }.map { (response) -> ([String: Any]) in
             guard var body = response.body else { return [:] }
             let bodyData = body.readData(length: body.readableBytes) ?? Data()
@@ -62,7 +61,7 @@ public class HDJGPushTool {
         
         for (index, batch) in chunks.enumerated() {
             // 平均分配时间间隔：每条延迟 index * (1/perSecond) 秒
-            let delay = TimeAmount.milliseconds(TimeAmount.Value(Int64(Double(index) * (1000.0 / Double(perSecond)))))
+            let delay = TimeAmount.milliseconds(Int64(Double(index) * (1000.0 / Double(perSecond))))
             let scheduled = req.eventLoop.scheduleTask(in: delay) {
                 return batch.map({ model in
                     return self.pushNotification(req, pushModel: model)
