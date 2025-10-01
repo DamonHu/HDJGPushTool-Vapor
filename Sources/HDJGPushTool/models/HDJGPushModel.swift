@@ -19,8 +19,8 @@ public class HDJGPushModel {
     public var platform: HDJGPushPlatform = .all //推送的平台
     public var audience: HDJGPushAudienceModel?  //推送的目标，如果为NULL则推送全部，全部每天通知10次
     public var apnsProduction = true //是否推送正式环境
-    private var alertTitle = ""     //推送的标题
-    private var alertContent = ""   //推送的内容
+    private(set) var alertTitle = ""     //推送的标题
+    private(set) var alertContent = ""   //推送的内容
     
     
     public init(alertTitle: String, alertContent: String) {
@@ -28,7 +28,7 @@ public class HDJGPushModel {
         self.alertContent = alertContent
     }
     //通过内容转为json数据
-    func getRequestJsonData() throws -> Data {
+    func getRequestJsonData() -> Data {
         var jsonObject = [String: Any]()
         //平台
         switch self.platform {
@@ -70,7 +70,7 @@ public class HDJGPushModel {
         jsonObject["notification"] = jsonMessageObject
         //附加参数
         jsonObject["options"] = ["apns_production": self.apnsProduction]
-        let requestData: Data = try JSONSerialization.data(withJSONObject: jsonObject, options: JSONSerialization.WritingOptions.prettyPrinted)
+        let requestData: Data = (try? JSONSerialization.data(withJSONObject: jsonObject, options: JSONSerialization.WritingOptions.prettyPrinted)) ?? Data()
         return requestData
     }
 }
